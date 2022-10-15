@@ -2,14 +2,18 @@ import React from "react";
 import '../assets/chat.css';
 import profImg from '../assets/img/userMale.png';
 
-const Chat = ()=>{
+const Chat = (props)=>{
+    const logout = ()=>{
+        alert("Siz haqiqatdan ham chiqmoqchimisiz ?");
+        props.setChatTokin(true);
+    }
     return(
         <>
             <div className="header">
                 <div className="container">
                     <div className="row between">
                         <h1>Chat App</h1>
-                        <button className="btn">Tizimdan chiqish</button>
+                        <button className="btn" onClick={logout}>Tizimdan chiqish</button>
                     </div>
                 </div>
             </div>

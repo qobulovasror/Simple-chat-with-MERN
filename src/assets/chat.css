@@ -1,25 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-}
-.container {
-    width: 85%;
-    margin: 0 auto;
-}
-.row {
-    display: flex;
-    flex-direction: row;
-}
-.column {
-    display: flex;
-    flex-direction: column;
-}
-.between {
-    justify-content: space-between;
-}
-
 .header {
     width: 100%;
     height: 70px;
