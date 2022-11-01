@@ -1,21 +1,22 @@
 import React, {useState} from "react";
 import axios from 'axios';
-import '../assets/regis.css';
+// import http from '../../services/http';
+import { ToastContainer, toast } from 'react-toastify';
+import '../../assets/regis.css';
 import { Link } from "react-router-dom";
 
-const Regis = (props)=>{
+const Regis = ({setChatTokin, setUserName})=>{
     const [user, setUser] = useState({username: "", email: "", password:"", comfPassword: ""});
     const notif = (errMsg)=>{
-        // toast.error(errMsg, {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
-        alert(`xato: ${errMsg}`)
+        toast.error(errMsg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
     }
     const submitHandler = (e)=>{
         e.preventDefault();
@@ -31,24 +32,27 @@ const Regis = (props)=>{
                 notif("passwors and conform password is not equal")
             }
             else{
-                axios.get('/api/auth/',{
-                    username: user.username,
-                    email: user.email,
-                    password: user.password
-                }).then(res=>{
-                    console.log(res.data)
-                    if(res.data){
-                    props.setChatTokin(res.data);
-                    props.setChatTokin(true);
-                    }
-                    // if(res.headers.token){
-                    //   props.setChatTokin(res.headers.token);
-                    // }
-                    })
-                .catch(err=>console.error(err));
+                httpRequert();
             }
         }
     } 
+
+    const httpRequert = ()=>{
+        axios.post('http://localhost:5000/api/regis',{
+            name: user.username,
+            email: user.email,
+            password: user.password
+        }).then(res=>{
+            console.log(res.data)
+            if(res.headers.authToken){
+                window.localStorage.setItem("chatToken", res.headers.authToken)
+                setChatTokin(res.headers.authToken);
+                setUserName(user.username);
+            }
+        })
+        .catch(err=>{ console.error(err); notif(err) });
+    }
+
     const inputHandler = (e)=>{
         const {name, value} = e.target;
         setUser({ ...user, [name]: value});
@@ -107,6 +111,7 @@ const Regis = (props)=>{
                 <input type="submit" value="Submit" className="btn" />
                 <span className="linkAnhor"> Already have an account <Link to="/"> Login page</Link> </span>
             </form>
+            <ToastContainer/>
         </>
     )
 }

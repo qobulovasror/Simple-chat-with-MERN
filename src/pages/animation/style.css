@@ -1,0 +1,113 @@
+.loading {
+    position: absolute;
+    min-width: 250px;
+    height: 70%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    padding: 20px;
+    color: #fff;
+    /* background-color: rgb(2 30 103 / 83%); */
+}
+.loading h1 {
+    text-align: center;
+    margin: 40px 0 70px 0;
+    color: #000;
+}
+.loading .animat {
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+}
+.loading .animat .item3 {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 15px;
+    border-radius: 50%;
+    background-color: rgb(1, 1, 255);
+}
+.animat .item3:nth-child(1) {
+    position: relative;
+    animation: tup1 2s linear infinite;
+}
+@keyframes tup1 {
+    0% { 
+        top: 0;
+        right: 0;
+    }
+    25% {
+        top: -60px;
+        right: -30px;
+    }
+    50% {
+        top: 0px;
+        right: -70px;
+    }
+    75% {
+         top: -60px;
+        right: -105px;
+    }
+    100%{
+         top: 0px;
+        right: -140px;
+    }
+} 
+.animat .item3:nth-child(2) {
+    position: relative;
+    animation: thuu 2s linear infinite; 
+}
+@keyframes thuu {
+    0% {
+        top: 0px;
+        right: 0px; 
+    }
+    20% {
+        right: 0px; 
+        top: 0px;
+    }
+    40% {
+        top: 0px;
+        right: 70px;
+    }
+    60% {
+        top: 0px;
+        right: 70px;
+    }
+    80% {
+        top: 0px;
+        right: 70px;
+    }
+    100% {
+        top: 0px;
+        right: 70px;
+    }
+}
+.animat .item3:nth-child(3) {
+    animation: three 2s linear infinite;
+}
+@keyframes three {
+    0% {
+        right: 0px;
+    }
+    20% {
+        right: 0px;
+    }
+    40% {
+        right: 0px;
+    }
+    60% {
+        right: 0px;
+    }
+    80% {
+        right: 70px;
+    }
+    100% {
+        right: 70px;
+    }
+}

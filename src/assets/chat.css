@@ -77,6 +77,10 @@ h1 {
     background-color: rgb(16, 29, 88);
 }
 
+.msgItem.req .row {
+    flex-direction: row-reverse;
+}
+
 
 
 
@@ -98,4 +102,22 @@ h1 {
     border: 1px solid #00f;
     padding: 10px;
     border-radius: 8px;
+}
+
+@media screen and (max-width: 600px)  {
+    .chat-box {
+        width: 95%;
+    }
+    .msgSender {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 860px)  {
+    .chat-box {
+        width: 90%;
+    }
+    .msgSender {
+        width: 90%;
+    }
 }

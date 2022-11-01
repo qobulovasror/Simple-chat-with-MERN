@@ -56,3 +56,18 @@ input {
 span {
     text-align: center;
 }
+
+@media screen and (max-width: 600px)  {
+    form {
+        width: 70%;
+        margin: 30px auto;
+        padding: 15px 20px;
+        border: 2px solid #00f;
+    }
+}
+
+@media screen and (max-width: 860px)  {
+    form {
+        width: 60%;
+    }
+}

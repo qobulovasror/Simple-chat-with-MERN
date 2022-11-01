@@ -39,3 +39,10 @@ code {
   text-align: center;
   font-weight: 500;
 }
+
+
+@media screen and (max-width: 860px)  {
+  .container {
+    width: 95%;
+  }
+}
