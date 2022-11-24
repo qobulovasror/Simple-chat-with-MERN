@@ -43,43 +43,55 @@ const Login = ({setChatTokin, setUserName})=>{
         }
     } 
     const httpRequest = ()=>{
-        const name = user.username;
-        const options = {
-            method: 'GET',
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
-            data: {name: name,password: user.password },
-            url: "/api/auth/"
-          };
+        // const name = user.username;
+        // const options = {
+        //     method: 'GET',
+        //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        //     data: {name: name,password: user.password },
+        //     url: "/api/auth"
+        //   };
      
-          axios(options)
-          .then(res=>{
-                console.log(res.data)
-                if(res.headers.authToken){
-                    console.log(res.headers.authToken, res.data)
-                    window.localStorage.setItem("chatToken", res.headers.authToken)
-                    setChatTokin(res.headers.authToken);
-                    setUserName(user.username);
-                }
-            })
-            .catch(err=>{
-                    notif(err.response.data);
-                    console.log(err)
-                });
-        // axios.get('/api/auth/', {
-        //     name: user.username,
-        //     password: user.password
-        // }).then(res=>{
-        //     console.log(res.data)
-        //     if(res.headers.authToken){
-        //         console.log(res.headers.authToken, res.data)
-        //         window.localStorage.setItem("chatToken", res.headers.authToken)
-        //         setChatTokin(res.headers.authToken);
-        //         setUserName(user.username);
+        //   axios(options)
+        //   .then(res=>{
+        //         console.log(res.data)
+        //         if(res.headers.authToken){
+        //             console.log(res.headers.authToken)
+        //             window.localStorage.setItem("chatToken", res.headers.authToken)
+        //             setChatTokin(res.headers.authToken);
+        //             setUserName(user.username);
+        //         }
+        //     })
+        //     .catch(err=>{
+        //             notif(err.response.data);
+        //             console.log(err);
+        //         });
+
+
+        // {
+        //     method: 'post',
+        //     url: '/user/12345',
+        //     data: {
+        //       firstName: 'Fred',
+        //       lastName: 'Flintstone'
         //     }
-        // })
-        // .catch(err=>{
-        //         notif(err.response.data);
-        //     });
+        //   }
+        axios.get('/api/auth/', {
+            params: {
+                name: user.username,
+                password: user.password
+            }
+        }).then(res=>{
+            console.log(res.data)
+            if(res.headers.authToken){
+                console.log(res.headers.authToken)
+                window.localStorage.setItem("chatToken", res.headers.authToken)
+                setChatTokin(res.headers.authToken);
+                setUserName(user.username);
+            }
+        })
+        .catch(err=>{
+                notif(err.response.data);
+            }); 
     }
 
     const inputHandler = (e)=>{

@@ -38,7 +38,7 @@ const Regis = ({setChatTokin, setUserName})=>{
     } 
 
     const httpRequert = ()=>{
-        axios.post('http://localhost:5000/api/regis',{
+        axios.post('/api/regis',{
             name: user.username,
             email: user.email,
             password: user.password
